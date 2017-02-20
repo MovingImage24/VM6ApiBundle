@@ -1,0 +1,37 @@
+{
+    "name": "movingimage/vm6-api-bundle",
+    "description": "Official Symfony bundle for interacting with the MovingIMAGE Video Manager 6 REST API",
+    "type": "bundle",
+    "license": "BSD 3-Clause License",
+    "authors": [
+        {
+            "name": "Ruben Knol",
+            "email": "ruben.knol@movingimage.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^5.5 || ^7.0",
+        "symfony/framework-bundle": "^2.7 || ^3.0",
+        "guzzlehttp/guzzle": "^6.0",
+        "movingimage/vm6-api-client": "dev-master"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^1.12",
+        "phpunit/phpunit": "^4.5 || ^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MovingImage\\Bundle\\VM6ApiBundle\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MovingImage\\Bundle\\VM6ApiBundle\\Tests\\": "Tests/"
+        }
+    }
+}
