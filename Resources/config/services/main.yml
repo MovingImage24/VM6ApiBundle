@@ -1,0 +1,45 @@
+services:
+
+    # Video Manager 6 API client - dynamically instantiated
+    vm6_api.client:
+        class: MovingImage\Client\VM6\Interfaces\ApiClientInterface
+        factory: ["@vm6_api.api_client_factory", create]
+        arguments:
+            - "@vm6_api.guzzle_client"
+            - "@vm6_api.serializer"
+
+    vm6_api.api_client_factory:
+        class: MovingImage\Client\VM6\Factory\Guzzle6ApiClientFactory
+
+    # Dedicated JMS Serializer instance
+    vm6_api.serializer:
+        class: JMS\Serializer
+        factory: ["@vmpro_api.api_client_factory", createSerializer]
+
+    # Re-usable Guzzle 6 HTTP client instance with
+    # all appropriate authentication handlers attached
+    vm6_api.guzzle_client:
+        class: GuzzleHttp\Client
+        factory: ["@vmpro_api.api_client_factory", createHttpClient]
+        arguments:
+            - "%vm6_api_base_url%"
+            - ["@vm6_api.api_key_middleware"]
+
+    # Guzzle 6 specific token middleware instance
+    vm6_api.api_key_middleware:
+        class: MovingImage\Client\VM6\Middleware\ApiKeyMiddleware
+        arguments:
+            - "@vm6_api.credential_manager"
+
+    vm6_api.credential_manager:
+        class: MovingImage\Client\VM6\Manager\CredentialManager
+        arguments:
+            - "@vm6_api.credentials"
+
+    # Video Manager Pro API credentials instance
+    vm6_api.credentials:
+        class: MovingImage\Client\VM6\Entity\ApiCredentials
+        arguments:
+            - "%vm6_api_credentials_apiKey%"
+            - "%vm6_api_credentials_developerKey%"
+            - "%vm6_api_credentials_clientKey%"
