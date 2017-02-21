@@ -1,0 +1,3 @@
+[x] Readme (also: Getting Started)
+[ ] Testing API connection
+[ ] 95 % Unittests
