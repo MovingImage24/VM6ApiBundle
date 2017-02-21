@@ -1,3 +1,5 @@
 [x] Readme (also: Getting Started)
-[ ] Testing API connection
+[x] Testing API connection
 [ ] 95 % Unittests
+[ ] Travis
+[ ] Scrutinizer

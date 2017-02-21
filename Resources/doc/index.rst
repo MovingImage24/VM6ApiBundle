@@ -1,5 +1,5 @@
 Getting started with VM6 API Bundle
-=====================================
+===================================
 
 This Symfony bundle allows you to seamlessly integrate the MovingIMAGE Video
 Manager 6 into your PHP application built on top of the Symfony framework.
