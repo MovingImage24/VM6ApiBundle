@@ -1,6 +1,6 @@
 <?php
 
-namespace VM6ApiBundle;
+namespace MovingImage\Bundle\VM6ApiBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

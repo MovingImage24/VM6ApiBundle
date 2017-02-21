@@ -1,6 +1,6 @@
 <?php
 
-namespace VM6ApiBundle\DependencyInjection;
+namespace MovingImage\Bundle\VM6ApiBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
