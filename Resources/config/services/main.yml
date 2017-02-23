@@ -14,13 +14,13 @@ services:
     # Dedicated JMS Serializer instance
     vm6_api.serializer:
         class: JMS\Serializer
-        factory: ["@vmpro_api.api_client_factory", createSerializer]
+        factory: ["@vm6_api.api_client_factory", createSerializer]
 
     # Re-usable Guzzle 6 HTTP client instance with
     # all appropriate authentication handlers attached
     vm6_api.guzzle_client:
         class: GuzzleHttp\Client
-        factory: ["@vmpro_api.api_client_factory", createHttpClient]
+        factory: ["@vm6_api.api_client_factory", createHttpClient]
         arguments:
             - "%vm6_api_base_url%"
             - ["@vm6_api.api_key_middleware"]
@@ -36,7 +36,7 @@ services:
         arguments:
             - "@vm6_api.credentials"
 
-    # Video Manager Pro API credentials instance
+    # Video Manager 6 API credentials instance
     vm6_api.credentials:
         class: MovingImage\Client\VM6\Entity\ApiCredentials
         arguments:
