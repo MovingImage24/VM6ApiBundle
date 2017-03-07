@@ -1,5 +1,4 @@
 services:
-
     # Video Manager 6 API client - dynamically instantiated
     vm6_api.client:
         class: MovingImage\Client\VM6\Interfaces\ApiClientInterface
@@ -7,6 +6,7 @@ services:
         arguments:
             - "@vm6_api.guzzle_client"
             - "@vm6_api.serializer"
+            - "@vm6_api.unlock_token_generator"
 
     vm6_api.api_client_factory:
         class: MovingImage\Client\VM6\Factory\Guzzle6ApiClientFactory
@@ -43,3 +43,9 @@ services:
             - "%vm6_api_credentials_apiKey%"
             - "%vm6_api_credentials_developerKey%"
             - "%vm6_api_credentials_clientKey%"
+
+    # Unlock token generator util
+    vm6_api.unlock_token_generator:
+        class: MovingImage\Client\VM6\Util\UnlockTokenGenerator
+        arguments:
+            - "%vm6_api_credentials_signingKey%"

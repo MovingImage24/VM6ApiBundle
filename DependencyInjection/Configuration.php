@@ -28,6 +28,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('apiKey')->isRequired()->end()
                         ->scalarNode('developerKey')->isRequired()->end()
                         ->scalarNode('clientKey')->isRequired()->end()
+                        ->scalarNode('signingKey')->defaultNull()->end()
                 ->end()
                 ->end()
             ->end()
